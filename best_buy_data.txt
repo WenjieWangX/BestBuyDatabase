@@ -1,0 +1,185 @@
+Table	ID	Name
+brands	1	Apple
+brands	2	Samsung
+brands	3	Microsoft
+brands	4	Sony
+brands	5	Intel
+brands	6	Yardbird
+brands	7	Lenovo
+brands	8	LG
+brands	9	Nikon
+brands	10	Bose
+brands	11	Canon
+brands	12	Dell
+brands	13	GoPro
+brands	14	HP
+brands	15	Sonos
+
+Table	Product_ID	Brand_ID	Name	Description	Price	Quantity
+products	1	1	Apple MacBook Pro	13-inch Apple M1 chip with 8-Core CPU and 8-core GPU	1299.99	25
+products	2	1	Apple Mac Air	13-inch Apple M1 chip with 8-Core CPU and 8-core GPU	549.99	10
+products	3	2	Samsung TV	55 inch 4k Ultra HD Smart TV with HDR	899.99	100
+products	4	2	Samsung Soundbar	5.1 Channel 360W Sounder System with Wireless Subwoofer	399.99	50
+products	5	3	Microsoft Surface Pro 9	13-inch Touch Screen Intel Eco Platform Core i7 16GB memory 256GB SSD	1299.99	50
+products	6	3	Microsoft Surface Pro 7+	12.3-inch Touch Screen Intel Core i3 8GB Memory 128GB SSD with Black Type Cover	699.99	20
+products	7	4	Sony PS5	825GB SSD, Ray Tracing, HDR, Backward Compatibility	499.99	20
+products	8	4	Sony Headphones	Noise Cancelling Over-Ear Headphones	299.99	30
+products	9	5	Core i9-11900K	Intel's latest high-end desktop processor	539.99	5
+products	10	5	Octane Memory	High-speed storage solution	179.99	15
+products	11	6	Grillsman Pro	Premium charcoal grill	799.99	8
+products	12	6	Smart Smoker	WiFi-enabled smoker	699.99	12
+products	13	7	ThinkPad X1 Carbon	Business0class ultrabook	1399.99	30
+products	14	7	Legion 5i Pro	High-performance gaming laptop	1699.99	20
+products	15	8	OLED TV	High-end 4K HDR TV	1999.99	5
+products	16	8	Gram Laptop	Lightweight and portable laptop	1199.99	15
+products	17	9	D780 DSLR Camera	Full-frame camera with 24.5 MP	1799.99	10
+products	18	9	Z 5 Mirrorless Camera	Full-frame mirrorless camera with 24.3 MP	1299.99	15
+products	19	10	QuitetComfort 35 II	Noise-cancelling headphones	299.99	25
+products	20	10	SoundLink Revolve	Portable Bluetooth speaker	199.99	35
+products	21	11	EOS R6 Mirrorless Camera	Full-frame mirrorless camera with 20.1 MP	2499.99	8
+products	22	11	PIXMA TS9120 Wireless Printer	All-in-one inkjet printer	199.99	20
+products	23	12	Alienware Aurora R12	High-performance gaming desktop	1999.99	5
+products	24	12	Inspiron 14 7000	Thin and light laptop	999.99	15
+products	25	13	GoPro HERO9	5K Ultra HD Action Camera	499.99	10
+products	26	13	GoPro Max	Waterproof 360 + Traditional Camera	399.99	15
+products	27	14	HP Spectre	13.3-inch 4K Ultra HD Touch-Screen Laptop	1299.99	5
+products	28	14	HP Envy	17.3-inch Touch-Screen Laptop	849.99	8
+products	29	15	Sonos Beam	Smart TV Sound Bar with Alexa Bolt-in Black	399.99	20
+products	30	15	Sonos One SL	Microphone-Free Smart Speaker	179.99	30
+
+Table	ID	Name
+vendors	1	Sony
+vendors	2	LG
+vendors	3	Samsung
+vendors	4	Dell
+vendors	5	HP
+vendors	6	Bose
+vendors	7	Nikon
+vendors	8	Canon
+vendors	9	Intel
+vendors	10	Microsoft
+vendors	11	Lenovo
+vendors	12	GoPro
+vendors	13	Sonos
+vendors	14	Yardbird
+vendors	15	Apple
+
+Table	Vendor_ID	Product_ID	price
+vendors_and_products	1	7	449.99
+vendors_and_products	1	8	249.99
+vendors_and_products	1	24	849.99
+vendors_and_products	2	3	799.99
+vendors_and_products	2	4	799.99
+vendors_and_products 	2	9	529.99
+vendors_and_products 	3	3	699.99
+vendors_and_products 	3	4	299.99
+vendors_and_products 	3	7	449.99
+vendors_and_products 	4	5	1199.99
+vendors_and_products 	4	6	899.99
+vendors_and_products 	4	23	1899.99
+vendors_and_products 	5	7	449.99
+vendors_and_products 	5	8	199.99
+vendors_and_products 	5	28	649.99
+vendors_and_products 	6	19	249.99
+vendors_and_products 	6	20	149.99
+vendors_and_products	6	29	349.99
+vendors_and_products 	7	17	1599.99
+vendors_and_products 	7	18	1199.99
+vendors_and_products 	7	26	329.99
+vendors_and_products 	8	11	2199.99
+vendors_and_products 	8	22	149.99
+vendors_and_products 	8	29	399.99
+vendors_and_products	9	1	1199.99
+vendors_and_products 	9	2	499.99
+vendors_and_products 	9	25	449.99
+vendors_and_products 	10	13	399.99
+vendors_and_products 	10	14	1499.99
+vendors_and_products 	10	30	199.99
+vendors_and_products 	11	21	2199.99
+vendors_and_products 	11	22	149.99
+vendors_and_products 	11	29	449.99
+vendors_and_products 	12	12	599.99
+vendors_and_products 	12	26	299.99
+vendors_and_products 	12	29	349.99
+vendors_and_products 	13	5	999.99
+vendors_and_products 	13	6	749.99
+vendors_and_products 	13	25	399.99
+vendors_and_products 	14	27	1199.99
+vendors_and_products 	14	28	749.99
+vendors_and_products 	14	30	149.99
+vendors_and_products 	15	9	479.99
+vendors_and_products 	15	10	159.99
+vendors_and_products 	15	29	299.99
+
+Table	ID	Name
+categories	1	Appliances
+categories	2	TV & Home Theater
+categories	3	Computers & Tablets
+categories	4	Cameras, Camcorders & Drones
+categories	5	Cell Phones
+categories	6	Audio
+categories	7	Video Games
+categories	8	Movies & Music
+categories	9	Car Electronics & GPS
+categories	10	Wearable Technology
+categories	11	Health & Wellness
+categories	12	Home, Furniture & Office
+categories	13	Smart Home, Security & Wi-Fi
+categories	14	Outdoor Living
+categories	15	Electric Transportation
+categories	16	Toys, Games & Collectibles
+categories	17	Sustainable Living
+
+
+Table	product_id	category_id
+products_and_categories		1	3
+products_and_categories		2	3
+products_and_categories		3	2
+products_and_categories		4	2
+products_and_categories		5	3
+products_and_categories 	6	3
+products_and_categories 	7	7
+products_and_categories 	8	6
+products_and_categories 	9	3
+products_and_categories 	10	3
+products_and_categories 	11	12
+products_and_categories 	12	12
+products_and_categories 	13	3
+products_and_categories 	14	3
+products_and_categories 	15	2
+products_and_categories 	16	3
+products_and_categories 	17	4
+products_and_categories 	18	4
+products_and_categories 	19	6
+products_and_categories 	20	6
+products_and_categories 	21	4
+products_and_categories 	22	3
+products_and_categories 	23	7
+products_and_categories 	24	3
+products_and_categories 	25	4
+products_and_categories 	26	4
+products_and_categories 	27	3
+products_and_categories 	28	3
+products_and_categories 	29	6
+products_and_categories 	30	6
+
+
+
+Table	ID	day	start_time	end_time
+hours	1
+hours
+hours
+hours
+hours
+hours
+
+
+
+
+
+
+
+
+
+
+
