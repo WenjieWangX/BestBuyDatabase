@@ -16,14 +16,14 @@ create table products
 		on delete cascade
     );
     
- create table categories 
+create table categories 
 	(category_id		varchar(20) not null,
 	category_name		varchar(45),
     primary key (category_id)
     );
     
 #JOIN table
- create table products_has_categories 
+create table products_has_categories 
 	(product_id			varchar(20) not null,
     category_id		varchar(20) not null,
     primary key (product_id, category_id),
@@ -40,7 +40,7 @@ create table vendors
     );
     
 #JOIN table
- create table vendors_has_productcs 
+create table vendors_has_productcs 
 	(vendor_id		varchar(20) not null,
     product_id		varchar(20) not null,
     price			float,
@@ -51,7 +51,7 @@ create table vendors
 		on delete cascade
     );
  
- create table hours 
+create table hours 
 	(hour_id			varchar(20) not null,
 	day					varchar(45) not null,
     start_time			time,
@@ -59,7 +59,7 @@ create table vendors
     primary key (hour_id)
     );
  
-  create table address 
+create table address 
 	(address_id			varchar(20) not null,
     street				varchar(45),
     city				varchar(45),
@@ -68,14 +68,14 @@ create table vendors
     primary key (address_id)
     );
  
-  create table stores 
+create table stores 
 	(store_id			varchar(20) not null,
 	address_id			varchar(20) not null,
     hour_id				varchar(20) not null,
     primary key (store_id),
 	foreign key (address_id) references address (address_id) 
 		on delete cascade,
-	foreign key (hour_id) references hour_id (hour_id) 
+	foreign key (hour_id) references hours (hour_id) 
 		on delete cascade
     );
 
@@ -91,7 +91,7 @@ create table inventory
 		on delete cascade
     );
  
-  create table cards 
+create table cards 
 	(card_id			varchar(20) not null,
     card_type			varchar(45),
 	card_name			varchar(45),
@@ -100,17 +100,16 @@ create table inventory
     primary key (card_id)
     ); 
     
- create table customers 
+create table customers 
 	(customer_id		varchar(20) not null,
 	first_name			varchar(20) not null,
     last_name			varchar(20) not null,
     email				varchar(45),
-    address				varchar(45),
     phone_number		varchar(45),
     primary key (customer_id)
     );
     
- create table orders 
+create table orders 
 	(order_id			varchar(20) not null,
 	customer_id			varchar(20) not null,
     store_id			varchar(20) not null,
@@ -124,7 +123,7 @@ create table inventory
     );
     
 #JOIN table
- create table products_has_orders
+create table products_has_orders
 	(product_id			varchar(20) not null,
     order_id			varchar(20) not null,
     primary key (product_id, order_id),
@@ -134,7 +133,7 @@ create table inventory
 		on delete cascade
     );
     
- create table customers_has_address
+create table customers_has_address
 	(customer_id			varchar(20) not null,
     address_id			varchar(20) not null,
     primary key (customer_id, address_id),
@@ -144,7 +143,7 @@ create table inventory
 		on delete cascade
     );
     
- create table address_has_cards
+create table address_has_cards
 	(address_id			varchar(20) not null,
     card_id			varchar(20) not null,
     primary key (address_id, card_id),
@@ -154,7 +153,7 @@ create table inventory
 		on delete cascade
     );
     
- create table customers_has_cards
+create table customers_has_cards
 	(customer_id			varchar(20) not null,
     card_id			varchar(20) not null,
     primary key (customer_id, card_id),
