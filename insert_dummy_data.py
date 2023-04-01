@@ -59,19 +59,19 @@ with open("BestBuy_dummy_data.txt", "r") as data_file:
         cursor.execute(hour_query, hour_values)
 
     # store address
-    store_address_query = "insert into store_address(address_id, street, city, state, zip_code) values (%s, %s, %s, %s, %s)"
-    for address in dic["address"]:
+    store_address_query = "insert into store_address(store_address_id, street, city, state, zip_code) values (%s, %s, %s, %s, %s)"
+    for address in dic["store_address"]:
         store_address_values = tuple(address)
         cursor.execute(store_address_query, store_address_values)
 
     # customer address
-    customer_address_query = "insert into customer_address(address_id, street, city, state, zip_code) values (%s, %s, %s, %s, %s)"
-    for address in dic["address"]:
+    customer_address_query = "insert into customer_address(customer_address_id, street, city, state, zip_code) values (%s, %s, %s, %s, %s)"
+    for address in dic["customer_address"]:
         customer_address_values = tuple(address)
         cursor.execute(customer_address_query, customer_address_values)
 
     # stores
-    store_query = "insert into stores(store_id, address_id, hour_id) values (%s, %s, %s)"
+    store_query = "insert into stores(store_id, store_address_id, hour_id) values (%s, %s, %s)"
     for store in dic["stores"]:
         store_values = tuple(store)
         cursor.execute(store_query, store_values)
@@ -83,7 +83,7 @@ with open("BestBuy_dummy_data.txt", "r") as data_file:
         cursor.execute(inventory_query, inventory_values)
 
     # cards
-    card_query = "insert into cards(card_id, card_type, card_name, card_num, expiration) values (%s, %s, %s, %s, %s)"
+    card_query = "insert into cards(card_id, customer_address_id, card_type, card_name, card_num, expiration) values (%s, %s, %s, %s, %s, %s)"
     for card in dic["cards"]:
         card_values = tuple(card)
         cursor.execute(card_query, card_values)
@@ -107,22 +107,10 @@ with open("BestBuy_dummy_data.txt", "r") as data_file:
         cursor.execute(product_order_query, product_order_values)
 
     # customers_has_address
-    customer_address_query = "insert into customers_has_address(customer_id, address_id) values (%s, %s)"
+    customer_address_query = "insert into customers_has_address(customer_id, customer_address_id) values (%s, %s)"
     for customer_address in dic["customers_has_address"]:
         customer_address_values = tuple(customer_address)
         cursor.execute(customer_address_query, customer_address_values)
-
-    # address_has_cards
-    address_card_query = "insert into address_has_cards(address_id, card_id) values (%s, %s)"
-    for address_card in dic["address_has_cards"]:
-        address_card_values = tuple(address_card)
-        cursor.execute(address_card_query, address_card_values)
-
-    # customers_has_cards
-    customer_card_query = "insert into customers_has_cards(customer_id, card_id) values (%s, %s)"
-    for customer_card in dic["customers_has_cards"]:
-        customer_card_values = tuple(customer_card)
-        cursor.execute(customer_card_query, customer_card_values)
 
 cnx.commit()
 cursor.close()

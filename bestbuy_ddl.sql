@@ -102,11 +102,14 @@ create table inventory
  
 create table cards 
 	(card_id			varchar(20) not null,
+    customer_address_id	varchar(20) not null,
     card_type			varchar(45),
 	card_name			varchar(45),
     card_num			varchar(45),
     expiration			date,
-    primary key (card_id)
+    primary key (card_id),
+    foreign key (customer_address_id) references customer_address (customer_address_id)
+		on delete cascade
     ); 
     
 create table customers 
@@ -153,16 +156,6 @@ create table customers_has_address
 		on delete cascade
     );
     
-create table address_has_cards
-	(customer_address_id			varchar(20) not null,
-    card_id			varchar(20) not null,
-    primary key (customer_address_id, card_id),
-    foreign key (customer_address_id) references customer_address (customer_address_id)
-		on delete cascade,
-	foreign key (card_id) references cards (card_id)
-		on delete cascade
-    );
-    
 create table customers_has_cards
 	(customer_id			varchar(20) not null,
     card_id			varchar(20) not null,
@@ -172,16 +165,6 @@ create table customers_has_cards
 	foreign key (card_id) references cards (card_id)
 		on delete cascade
     );
- 
- 
- 
- 
- 
- 
-
-
-    
-
     
 
  

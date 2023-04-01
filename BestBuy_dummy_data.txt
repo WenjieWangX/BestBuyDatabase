@@ -213,12 +213,12 @@ customers	3	Michael	Johnson	michael.johnson@email.com	(345) 678-9012
 customers	4	Emily	Brown	emily.brown@email.com	(456) 789-0123
 customers	5	William	Davis	william.davis@email.com	(567) 890-1234
 
-Table	ID	type	name	card_number	expiration
-cards	1	Visa	John Smith	4111 1111 1111 1111	2025-06-01
-cards	2	Mastercard	Jane Doe	5500 0000 0000 0004	2024-12-01
-cards	3	Amex	Alex Kim	3714 496353 98431	2023-09-01
-cards	4	Discover	Emily Lee	6011 0009 9013 9424	2026-05-01
-cards	5	Visa	Adam Chen	4111 1111 1111 1111	2027-01-01
+Table	card_id	customer_address_id type	name	card_number	expiration
+cards	1	2	Visa	John Smith	4111 1111 1111 1111	2025-06-01
+cards	2	5	Mastercard	Jane Doe	5500 0000 0000 0004	2024-12-01
+cards	3	1	Amex	Alex Kim	3714 496353 98431	2023-09-01
+cards	4	3	Discover	Emily Lee	6011 0009 9013 9424	2026-05-01
+cards	5	4	Visa	Adam Chen	4111 1111 1111 1111	2027-01-01
 
 Table	customer_id	card_id
 customers_has_cards	1	1
@@ -236,13 +236,6 @@ customers_has_address	3	4
 customers_has_address	4	5
 customers_has_address	4	2
 customers_has_address	5	2
-
-Table	address_id	card_id
-address_has_cards	1	2
-address_has_cards	2	5
-address_has_cards	3	1
-address_has_cards	4	3
-address_has_cards	5	4
 
 Table	order_id	customer_id	store_id	order_date	total_price
 orders	1	1	4	2020-07-25 12:05:23	1839.98
