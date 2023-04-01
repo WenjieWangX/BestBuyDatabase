@@ -15,8 +15,6 @@ drop table products;
 drop table brands;
  
 drop table customers_has_address;
-
-drop table address_has_cards;
  
 drop table customers_has_cards;
 

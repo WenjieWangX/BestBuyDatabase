@@ -165,7 +165,6 @@ create table customers_has_cards
 	foreign key (card_id) references cards (card_id)
 		on delete cascade
     );
-    
 
  
  
