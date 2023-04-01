@@ -1,4 +1,4 @@
-drop table vendors_has_productcs;
+drop table vendors_has_products;
 
 drop table vendors;
 
@@ -30,7 +30,9 @@ drop table customers;
  
 drop table hours;
 
-drop table address;
+drop table customer_address;
+
+drop table store_address;
  
  
  

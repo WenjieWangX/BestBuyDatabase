@@ -8,7 +8,7 @@ create table products
 	(product_id			varchar(20) not null,
 	brand_id			varchar(20) not null,
     product_name		varchar(45),
-    description			varchar(45),
+    description			varchar(255),
     price				float,
     quantity_in_stock 	int,
     primary key (product_id),
@@ -40,7 +40,7 @@ create table vendors
     );
     
 #JOIN table
-create table vendors_has_productcs 
+create table vendors_has_products 
 	(vendor_id		varchar(20) not null,
     product_id		varchar(20) not null,
     price			float,
@@ -59,21 +59,30 @@ create table hours
     primary key (hour_id)
     );
  
-create table address 
-	(address_id			varchar(20) not null,
+create table store_address 
+	(store_address_id			varchar(20) not null,
     street				varchar(45),
     city				varchar(45),
     state				varchar(45),
     zip_code			varchar(45),
-    primary key (address_id)
+    primary key (store_address_id)
+    );
+    
+create table customer_address 
+	(customer_address_id			varchar(20) not null,
+    street				varchar(45),
+    city				varchar(45),
+    state				varchar(45),
+    zip_code			varchar(45),
+    primary key (customer_address_id)
     );
  
 create table stores 
 	(store_id			varchar(20) not null,
-	address_id			varchar(20) not null,
+	store_address_id			varchar(20) not null,
     hour_id				varchar(20) not null,
     primary key (store_id),
-	foreign key (address_id) references address (address_id) 
+	foreign key (store_address_id) references store_address (store_address_id) 
 		on delete cascade,
 	foreign key (hour_id) references hours (hour_id) 
 		on delete cascade
@@ -96,7 +105,7 @@ create table cards
     card_type			varchar(45),
 	card_name			varchar(45),
     card_num			varchar(45),
-    expiration			datetime,
+    expiration			date,
     primary key (card_id)
     ); 
     
@@ -126,6 +135,7 @@ create table orders
 create table products_has_orders
 	(product_id			varchar(20) not null,
     order_id			varchar(20) not null,
+    amount				int not null,
     primary key (product_id, order_id),
     foreign key (product_id) references products (product_id)
 		on delete cascade,
@@ -135,19 +145,19 @@ create table products_has_orders
     
 create table customers_has_address
 	(customer_id			varchar(20) not null,
-    address_id			varchar(20) not null,
-    primary key (customer_id, address_id),
+    customer_address_id			varchar(20) not null,
+    primary key (customer_id, customer_address_id),
     foreign key (customer_id) references customers (customer_id)
 		on delete cascade,
-	foreign key (address_id) references address (address_id)
+	foreign key (customer_address_id) references customer_address (customer_address_id)
 		on delete cascade
     );
     
 create table address_has_cards
-	(address_id			varchar(20) not null,
+	(customer_address_id			varchar(20) not null,
     card_id			varchar(20) not null,
-    primary key (address_id, card_id),
-    foreign key (address_id) references address (address_id)
+    primary key (customer_address_id, card_id),
+    foreign key (customer_address_id) references customer_address (customer_address_id)
 		on delete cascade,
 	foreign key (card_id) references cards (card_id)
 		on delete cascade
