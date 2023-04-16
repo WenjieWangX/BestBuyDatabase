@@ -11,8 +11,6 @@ drop table inventory;
 drop table products_has_orders;
 
 drop table products;
-
-drop table brands;
  
 drop table customers_has_address;
  

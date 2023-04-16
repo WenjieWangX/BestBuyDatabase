@@ -1,51 +1,34 @@
-Table	ID	Name
-brands	1	Apple
-brands	2	Samsung
-brands	3	Microsoft
-brands	4	Sony
-brands	5	Intel
-brands	6	Yardbird
-brands	7	Lenovo
-brands	8	LG
-brands	9	Nikon
-brands	10	Bose
-brands	11	Canon
-brands	12	Dell
-brands	13	GoPro
-brands	14	HP
-brands	15	Sonos
-
-Table	Product_ID	Brand_ID	Name	Description	Price	Quantity
-products	1	1	Apple MacBook Pro	13-inch Apple M1 chip with 8-Core CPU and 8-core GPU	1299.99	25
-products	2	1	Apple Mac Air	13-inch Apple M1 chip with 8-Core CPU and 8-core GPU	1199.99	10
-products	3	2	Samsung TV	55 inch 4k Ultra HD Smart TV with HDR	899.99	100
-products	4	2	Samsung Soundbar	5.1 Channel 360W Sounder System with Wireless Subwoofer	399.99	50
-products	5	3	Microsoft Surface Pro 9	13-inch Touch Screen Intel Eco Platform Core i7 16GB memory 256GB SSD	1299.99	50
-products	6	3	Microsoft Surface Pro 7+	12.3-inch Touch Screen Intel Core i3 8GB Memory 128GB SSD with Black Type Cover	699.99	20
-products	7	4	Sony PS5	825GB SSD, Ray Tracing, HDR, Backward Compatibility	499.99	20
-products	8	4	Sony Headphones	Noise Cancelling Over-Ear Headphones	299.99	30
-products	9	5	Core i9-11900K	Intel's latest high-end desktop processor	539.99	5
-products	10	5	Octane Memory	High-speed storage solution	179.99	15
-products	11	6	Grillsman Pro	Premium charcoal grill	799.99	8
-products	12	6	Smart Smoker	WiFi-enabled smoker	699.99	12
-products	13	7	ThinkPad X1 Carbon	Business0class ultrabook	1399.99	30
-products	14	7	Legion 5i Pro	High-performance gaming laptop	1699.99	20
-products	15	8	OLED TV	High-end 4K HDR TV	1999.99	5
-products	16	8	Gram Laptop	Lightweight and portable laptop	1199.99	15
-products	17	9	D780 DSLR Camera	Full-frame camera with 24.5 MP	1799.99	10
-products	18	9	Z 5 Mirrorless Camera	Full-frame mirrorless camera with 24.3 MP	1299.99	15
-products	19	10	QuitetComfort 35 II	Noise-cancelling headphones	299.99	25
-products	20	10	SoundLink Revolve	Portable Bluetooth speaker	199.99	35
-products	21	11	EOS R6 Mirrorless Camera	Full-frame mirrorless camera with 20.1 MP	2499.99	8
-products	22	11	PIXMA TS9120 Wireless Printer	All-in-one inkjet printer	199.99	20
-products	23	12	Alienware Aurora R12	High-performance gaming desktop	1999.99	5
-products	24	12	Inspiron 14 7000	Thin and light laptop	999.99	15
-products	25	13	GoPro HERO9	5K Ultra HD Action Camera	499.99	10
-products	26	13	GoPro Max	Waterproof 360 + Traditional Camera	399.99	15
-products	27	14	HP Spectre	13.3-inch 4K Ultra HD Touch-Screen Laptop	1299.99	5
-products	28	14	HP Envy	17.3-inch Touch-Screen Laptop	849.99	8
-products	29	15	Sonos Beam	Smart TV Sound Bar with Alexa Bolt-in Black	399.99	20
-products	30	15	Sonos One SL	Microphone-Free Smart Speaker	179.99	30
+Table	Product_ID	Brand_Name	Name	Description	Price	Quantity
+products	1	Apple	Apple MacBook Pro	13-inch Apple M1 chip with 8-Core CPU and 8-core GPU	1299.99	25
+products	2	Apple	Apple Mac Air	13-inch Apple M1 chip with 8-Core CPU and 8-core GPU	1199.99	10
+products	3	Samsung	Samsung TV	55 inch 4k Ultra HD Smart TV with HDR	899.99	100
+products	4	Samsung	Samsung Soundbar	5.1 Channel 360W Sounder System with Wireless Subwoofer	399.99	50
+products	5	Microsoft	Microsoft Surface Pro 9	13-inch Touch Screen Intel Eco Platform Core i7 16GB memory 256GB SSD	1299.99	50
+products	6	Microsoft	Microsoft Surface Pro 7+	12.3-inch Touch Screen Intel Core i3 8GB Memory 128GB SSD with Black Type Cover	699.99	20
+products	7	Sony	Sony PS5	825GB SSD, Ray Tracing, HDR, Backward Compatibility	499.99	20
+products	8	Sony	Sony Headphones	Noise Cancelling Over-Ear Headphones	299.99	30
+products	9	Intel	Core i9-11900K	Intel's latest high-end desktop processor	539.99	5
+products	10	Intel	Octane Memory	High-speed storage solution	179.99	15
+products	11	Yardbird	Grillsman Pro	Premium charcoal grill	799.99	8
+products	12	Yardbird	Smart Smoker	WiFi-enabled smoker	699.99	12
+products	13	Lenovo	ThinkPad X1 Carbon	Business0class ultrabook	1399.99	30
+products	14	Lenovo	Legion 5i Pro	High-performance gaming laptop	1699.99	20
+products	15	IG	OLED TV	High-end 4K HDR TV	1999.99	5
+products	16	IG	Gram Laptop	Lightweight and portable laptop	1199.99	15
+products	17	Nikon	D780 DSLR Camera	Full-frame camera with 24.5 MP	1799.99	10
+products	18	Nikon	Z 5 Mirrorless Camera	Full-frame mirrorless camera with 24.3 MP	1299.99	15
+products	19	Bose	QuitetComfort 35 II	Noise-cancelling headphones	299.99	25
+products	20	Bose	SoundLink Revolve	Portable Bluetooth speaker	199.99	35
+products	21	Canon	EOS R6 Mirrorless Camera	Full-frame mirrorless camera with 20.1 MP	2499.99	8
+products	22	Canon	PIXMA TS9120 Wireless Printer	All-in-one inkjet printer	199.99	20
+products	23	Dell	Alienware Aurora R12	High-performance gaming desktop	1999.99	5
+products	24	Dell	Inspiron 14 7000	Thin and light laptop	999.99	15
+products	25	GoPro	GoPro HERO9	5K Ultra HD Action Camera	499.99	10
+products	26	GoPro	GoPro Max	Waterproof 360 + Traditional Camera	399.99	15
+products	27	HP	HP Spectre	13.3-inch 4K Ultra HD Touch-Screen Laptop	1299.99	5
+products	28	HP	HP Envy	17.3-inch Touch-Screen Laptop	849.99	8
+products	29	Sonos	Sonos Beam	Smart TV Sound Bar with Alexa Bolt-in Black	399.99	20
+products	30	Sonos	Sonos One SL	Microphone-Free Smart Speaker	179.99	30
 
 Table	ID	Name
 vendors	1	Sony

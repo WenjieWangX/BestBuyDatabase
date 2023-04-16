@@ -16,14 +16,8 @@ with open("BestBuy_dummy_data.txt", "r") as data_file:
             else:
                 dic[fields[0]] = [fields[1:]]
 
-    # brands
-    brand_query = "insert into brands(brand_id, brand_name) values (%s, %s)"
-    for brand in dic["brands"]:
-        query_values = tuple(brand)
-        cursor.execute(brand_query, query_values)
-
     # products
-    product_query = "insert into products(product_id, brand_id, product_name, description, price, quantity_in_stock) values (%s, %s, %s, %s, %s, %s)"
+    product_query = "insert into products(product_id, brand_name, product_name, description, price, quantity_in_stock) values (%s, %s, %s, %s, %s, %s)"
     for product in dic["products"]:
         product_values = tuple(product)
         cursor.execute(product_query, product_values)

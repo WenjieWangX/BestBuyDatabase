@@ -1,19 +1,11 @@
-create table brands 
-	(brand_id			varchar(20) not null,
-    brand_name			varchar(45),
-    primary	key (brand_id)
-    );
-
 create table products 
 	(product_id			varchar(20) not null,
-	brand_id			varchar(20) not null,
+	brand_name			varchar(45) not null,
     product_name		varchar(45),
     description			varchar(255),
     price				float,
     quantity_in_stock 	int,
-    primary key (product_id),
-	foreign key (brand_id) references brands (brand_id) 
-		on delete cascade
+    primary key (product_id)
     );
     
 create table categories 
@@ -165,6 +157,11 @@ create table customers_has_cards
 	foreign key (card_id) references cards (card_id)
 		on delete cascade
     );
+ 
+ 
+ 
+ 
+
 
  
  
