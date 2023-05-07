@@ -30,11 +30,6 @@ drop table customer_address;
 
 drop table store_address;
  
- 
- 
- 
-
-
     
 
     

@@ -9,7 +9,7 @@ with store_product_sales as (
 )
 select store_id, product_id, product_name, sales, sales_rank
 from store_product_sales
-where sales_rank <= 20
+where sales_rank <= 10
 order by store_id, sales DESC;
 
 # What are the 20 top-selling products in each state?
@@ -24,19 +24,19 @@ with state_product_sales as (
 )
 select store_id, product_id, product_name, sales, state, sales_rank
 from state_product_sales
-where sales_rank <= 20
+where sales_rank <= 10
 order by store_id, sales DESC;
 
 
 # What are the 5 stores with the most sales so far this year?
 with top_stores_sales as (
-  select s.store_id, rank() over (partition by s.store_id order by sum(o.total_price) desc) as sales_rank
+  select s.store_id, rank() over (partition by s.store_id order by sum(o.total_price) desc) as sales_rank, sum(o.total_price) as Store_Total_Price
   from stores s, orders o
 	where s.store_id = o.store_id and
-		year(o.order_date) = 2022
+		year(o.order_date) = 2023
   group by s.store_id
 )
-select store_id, sales_rank
+select store_id, sales_rank, Store_Total_Price
 from top_stores_sales
 where sales_rank <= 5
 order by store_id, sales_rank DESC;
@@ -53,7 +53,7 @@ where p1.product_name = "Apple MacBook Pro" and
 # What are the top 3 types of product that customers buy in addition to milk? (Or similar question for nonfood enterprises.)
 with top_category_sales as (
   select c.category_id, c.category_name,
-	rank() over (partition by c.category_id order by sum(po.amount) desc) as category_sale_rank
+	rank() over (partition by c.category_id order by sum(po.amount) desc) as category_sale_rank, sum(po.amount) as total_amount
   from categories c, products_has_categories pc, products p, products_has_orders po, orders o
   where c.category_id = pc.category_id and
 	p.product_id = pc.product_id and
@@ -67,7 +67,7 @@ with top_category_sales as (
 	p.product_name != "Apple MacBook Pro"
     group by c.category_id
 )
-select category_id, category_name, category_sale_rank
+select category_id, category_name, category_sale_rank, total_amount
 from top_category_sales
 where category_sale_rank <= 3
 order by category_id, category_sale_rank DESC;

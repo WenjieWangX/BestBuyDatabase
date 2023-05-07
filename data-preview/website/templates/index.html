@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard</title>
+    <!-- 
+      @tag link link to an external resource Bootstrap CSS file and custom CSS file 
+    -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/index.css"/>
+  </head>
+  <body>
+    <!-- 
+      @tag div used to group together HTML elements and layout
+    -->
+    <div class="container">
+      <!-- 
+        @tag form used to create an HTML form for user input 
+      -->
+      <form id="select-form">
+        <div>
+          <label for="data_options">Choose data type</label>
+          <!-- 
+            @tag select creates a dropdown data options list for user selection
+          -->
+          <select id="data_options" name="data_options" class="form-select">
+            <option value="{{ Select }}">Select...</option>
+            {% for option in options %}
+                <option value="{{ option }}">{{ option }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <!-- 
+          @tag button refresh the data without refreshing the page
+        -->
+        <button id="refresh-btn" type="button" class="btn btn-primary">Refresh</button>
+        <!-- 
+          @tag button download data as csv
+        -->
+        <button id="download-btn" type="button" class="btn btn-success">Download as csv</button>
+      </form>
+      <!-- 
+        @tag div contain the plot
+      -->
+      <div id="plot-div">
+        {% for table in data %}
+          {{ table|safe }}
+        {% endfor %}
+        {{ plot|safe }}
+      </div>
+    </div>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="static/index.js"></script>
+  </body>
+</html>

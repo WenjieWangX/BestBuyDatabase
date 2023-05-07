@@ -40,17 +40,13 @@ order by store_id, sales DESC;
 
 # What are the 5 stores with the most sales so far this year?
 queries3 = """
-with top_stores_sales as (
-  select s.store_id, rank() over (partition by s.store_id order by sum(o.total_price) desc) as sales_rank
-  from stores s, orders o
-	where s.store_id = o.store_id and
-		year(o.order_date) = 2022
-  group by s.store_id
-)
-select store_id, sales_rank
-from top_stores_sales
-where sales_rank <= 5
-order by store_id, sales_rank DESC;
+SELECT s.store_id, SUM(o.total_price) AS total_sales
+FROM stores s
+INNER JOIN orders o ON s.store_id = o.store_id
+WHERE YEAR(o.order_date) = 2023
+GROUP BY s.store_id
+ORDER BY total_sales DESC
+LIMIT 5;
 """
 
 # In how many stores does Coke outsell Pepsi? (Or, a similar query for enterprises that don’t sell soda.)
@@ -66,27 +62,58 @@ where p1.product_name = "Apple MacBook Pro" and
 
 # What are the top 3 types of product that customers buy in addition to milk? (Or similar question for nonfood enterprises.)
 queries5 = """
-with top_category_sales as (
-  select c.category_id, c.category_name,
-	rank() over (partition by c.category_id order by sum(po.amount) desc) as category_sale_rank
-  from categories c, products_has_categories pc, products p, products_has_orders po, orders o
-  where c.category_id = pc.category_id and
-	p.product_id = pc.product_id and
-	p.product_id = po.product_id and
-	o.order_id = po.order_id and
-	o.order_id in (select o.order_id
-					from orders o, products_has_orders po, products p
-					where o.order_id = po.order_id and
-						p.product_id = po.product_id and
-						p.product_name = "Apple MacBook Pro") and
-	p.product_name != "Apple MacBook Pro"
-    group by c.category_id
+SELECT c.category_name, COUNT(*) AS total_sales
+FROM products p
+JOIN products_has_categories pc ON p.product_id = pc.product_id
+JOIN categories c ON pc.category_id = c.category_id
+JOIN products_has_orders po ON p.product_id = po.product_id
+JOIN orders o ON po.order_id = o.order_id
+JOIN customers c2 ON o.customer_id = c2.customer_id
+WHERE c2.customer_id IN (
+	SELECT DISTINCT o.customer_id
+	FROM orders o
+	JOIN products_has_orders po ON o.order_id = po.order_id
+	JOIN products p ON po.product_id = p.product_id
+	JOIN products_has_categories pc ON p.product_id = pc.product_id
+	WHERE p.product_name = 'Apple Macbook Pro'
 )
-select category_id, category_name, category_sale_rank
-from top_category_sales
-where category_sale_rank <= 3
-order by category_id, category_sale_rank DESC;
+AND p.product_name != 'Apple Macbook Pro'
+GROUP BY c.category_name
+ORDER BY total_sales DESC
+LIMIT 3;
 """
+
+queries6 = """
+SELECT DISTINCT v.vendor_name
+FROM vendors v
+INNER JOIN vendors_has_products vp ON v.vendor_id = vp.vendor_ID
+INNER JOIN products p ON vp.product_ID = p.product_id
+WHERE vp.price > 1000;
+"""
+
+queries7 = """
+SELECT SUM(p.quantity_in_stock)
+FROM products p
+INNER JOIN vendors_has_products vp ON p.product_id = vp.product_id
+INNER JOIN vendors v ON vp.vendor_ID = v.vendor_id
+WHERE v.vendor_name != 'Yardbird';
+"""
+
+queries8 = """
+SELECT v.vendor_name
+FROM vendors v
+INNER JOIN vendors_has_products vp ON v.vendor_id = vp.vendor_ID
+INNER JOIN products p ON vp.product_id = p.product_id
+WHERE vp.price = (SELECT MAX(vp2.price) FROM vendors_has_products vp2);
+"""
+
+# queries9 = """"
+# SELECT AVG(vp.price)
+# FROM vendors_has_products vp
+# INNER JOIN vendors v ON vp.vendor_ID = v.vendor_ID
+# INNER JOIN products p ON vp.product_ID = p.product_ID
+# WHERE v.vendor_name IN ('Apple', 'Bose');
+# """
 
 user_input = input("Please choose the following option by it assign number:\n \
                    1. The 20 top-selling products at each store\n \
@@ -94,6 +121,9 @@ user_input = input("Please choose the following option by it assign number:\n \
                    3. The 5 stores with the most sales so far this year\n \
                    4. Number of the stores that Apple Macbook Pro outsell Apple Macbook Air\n \
                    5. The top 3 types of product that customers buy in addition to Apple Macbook Pro\n\
+                   6. What are the names of the vendors that sell products with a price greater than $1000?\n\
+                   7. What is the total quantity of all products sold by vendors that are not Yardbird?\n\
+                   8. Which vendor sells the product with the highest price?\n\
                    Please enter your choice: ")
 
 while user_input != "exit":
@@ -113,9 +143,9 @@ while user_input != "exit":
                   product_name, "\t", sales, "\t", state, "\t", sales_rank)
     elif user_input == "3":
         cursor.execute(queries3)
-        print("Store_id", "\t", "sales_rank")
-        for store_id, sales_rank in cursor:
-            print(store_id, "\t", sales_rank)
+        print("Store_id", "\t", "total_price")
+        for store_id, total_price in cursor:
+            print(store_id, "\t", total_price)
     elif user_input == "4":
         cursor.execute(queries4)
         print("Number of Store")
@@ -123,9 +153,29 @@ while user_input != "exit":
             print(num[0])
     elif user_input == "5":
         cursor.execute(queries5)
-        print("category_id", "\t", "category_name", "\t", "category_sale_rank")
-        for category_id, category_name, category_sale_rank in cursor:
-            print(category_id, "\t", category_name, "\t", category_sale_rank)
+        print("category_name", "\t", "total_sales")
+        for category_name, total_sale in cursor:
+            print(category_name, "\t", total_sale)
+    elif user_input == "6":
+        cursor.execute(queries6)
+        print("vendor_name")
+        for vendor_name in cursor:
+            print(vendor_name[0])
+    elif user_input == "7":
+        cursor.execute(queries7)
+        print("num_of_products")
+        for num_product in cursor:
+            print(num_product[0])
+    elif user_input == "8":
+        cursor.execute(queries8)
+        print("vendor_name")
+        for vendor_name in cursor:
+            print(vendor_name[0])
+    # elif user_input == "9":
+    #     cursor.execute(queries9)
+    #     print("avg_price")
+    #     for avg_price in cursor:
+    #         print(avg_price[0])
     else:
         print("Please enter a vaild input")
 
@@ -135,6 +185,9 @@ while user_input != "exit":
                    3. The 5 stores with the most sales so far this year\n \
                    4. Number of the stores that Apple Macbook Pro outsell Apple Macbook Air\n \
                    5. The top 3 types of product that customers buy in addition to Apple Macbook Pro\n\
+                   6. What are the names of the vendors that sell products with a price greater than $1000?\n\
+                   7. What is the total quantity of all products sold by vendors that are not Yardbird?\n\
+                   8. Which vendor sells the product with the highest price?\n\
                    Please enter your choice, to exit please type exit: ")
 
 

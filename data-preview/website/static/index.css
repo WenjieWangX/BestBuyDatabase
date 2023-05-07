@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  margin: 2rem;
+}
+
+#select-form {
+  display: flex;
+  height: fit-content;
+  gap: 2rem;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+}
+
+#plot-div {
+  flex-grow : 1;
+}
+
+.form-select {
+  width: fit-content;
+}
+
+tr {
+  text-align: left !important;
+}
